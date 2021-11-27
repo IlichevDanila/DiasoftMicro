@@ -12,11 +12,13 @@ public class GreetingController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
+    @LogRequest
     @GetMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "Diasoft") String name) {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 
+    @LogRequest
     @GetMapping("/primes")
     public Primes primes(@RequestParam(value = "count", defaultValue = "10") int count) {
         return new Primes(counter.incrementAndGet(), count);
