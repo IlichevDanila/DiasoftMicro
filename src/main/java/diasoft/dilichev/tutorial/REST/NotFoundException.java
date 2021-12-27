@@ -1,4 +1,4 @@
-package diasoft.dilichev.tutorial;
+package diasoft.dilichev.tutorial.REST;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

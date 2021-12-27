@@ -1,12 +1,23 @@
-package diasoft.dilichev.tutorial;
+package diasoft.dilichev.tutorial.REST;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
+import diasoft.dilichev.tutorial.LogRequest;
+import diasoft.dilichev.tutorial.REST.NotFoundException;
+import diasoft.dilichev.tutorial.REST.objects.Greeting;
+import diasoft.dilichev.tutorial.REST.objects.Primes;
+import diasoft.dilichev.tutorial.REST.objects.Sequence;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class GreetingController {
+public class MainController {
+
+    @Autowired
+    private GreetingService greetingService;
 
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
@@ -15,8 +26,29 @@ public class GreetingController {
 
     @LogRequest
     @GetMapping("/greeting")
-    public Greeting greeting(@RequestParam(value = "name", defaultValue = "Diasoft") String name) {
-        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+    public List<Greeting> GetGreeting(@RequestParam(value = "id", defaultValue = "-1") int id) {
+        if(id < 0) {
+            return greetingService.getAll();
+        }
+        List<Greeting> res = new ArrayList<Greeting>();
+        res.add(greetingService.get(id));
+
+        return res;
+    }
+
+    @PostMapping("/greeting")
+    public Greeting AddGreeting(@RequestBody Greeting body) {
+        return greetingService.add(body);
+    }
+
+    @PutMapping("/greeting")
+    public Greeting UpdateGreeting(@RequestBody Greeting body) {
+        return greetingService.update(body);
+    }
+
+    @DeleteMapping("/greeting")
+    public void DeleteGreeting(@RequestBody int id) {
+        greetingService.remove(id);
     }
 
     @LogRequest

@@ -1,4 +1,4 @@
-package diasoft.dilichev.tutorial;
+package diasoft.dilichev.tutorial.REST.objects;
 
 public class Primes {
     private final long id;
