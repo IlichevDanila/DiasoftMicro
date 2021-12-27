@@ -1,9 +1,8 @@
-package diasoft.dilichev.tutorial.REST;
+package diasoft.dilichev.tutorial;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import diasoft.dilichev.tutorial.REST.objects.Greeting;
-import diasoft.dilichev.tutorial.REST.objects.Primes;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;

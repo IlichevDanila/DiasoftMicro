@@ -1,4 +1,4 @@
-package diasoft.dilichev.tutorial.REST.objects;
+package diasoft.dilichev.tutorial;
 
 public class Sequence {
     private int count;
