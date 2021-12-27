@@ -7,9 +7,10 @@ import java.io.Serializable;
 @Table(name = "greetings")
 public class Greeting implements Serializable {
     @Id
-    @GeneratedValue
+    @Column(name = "id")
     private long id;
 
+    @Column(name = "content")
     private String content;
 
     public Greeting()
