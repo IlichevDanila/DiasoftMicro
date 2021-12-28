@@ -1,0 +1,39 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet author="dilichev" id="CreateGreetingTable">
+        <createTable tableName="greetings">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="content" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="dilichev" id="FillTable">
+        <insert tableName="greetings">
+            <column name="id" value="1"/>
+            <column name="content" value="Hello, Diasoft!"/>
+        </insert>
+
+        <insert tableName="greetings">
+            <column name="id" value="2"/>
+            <column name="content" value="Hello, Dilichev!"/>
+        </insert>
+
+        <insert tableName="greetings">
+            <column name="id" value="3"/>
+            <column name="content" value="Hello, Somebody!"/>
+        </insert>
+
+        <insert tableName="greetings">
+            <column name="id" value="10"/>
+            <column name="content" value="Some content"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
