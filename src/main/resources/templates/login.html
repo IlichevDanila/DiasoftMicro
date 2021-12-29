@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+>
+<head>
+    <title>Вход</title>
+</head>
+<body>
+<div th:if="${param.error}">
+    Неправильное имя пользователя или пароль (попробуйте user/passwd)
+</div>
+<form method="POST" action="/login">
+    <h2>Для просмотра index нужно авторизоваться:</h2>
+    <div>
+        <input name="username" type="text" placeholder="Имя пользователя"/>
+        <input name="password" type="password" placeholder="Пароль"/>
+        <button type="submit">Войти</button>
+    </div>
+</form>
+</body>
+</html>
